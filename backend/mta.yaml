@@ -1,0 +1,47 @@
+﻿ID: vad_backend
+_schema-version: 3.1.0
+version: 1.0.0
+
+modules:
+    -
+        name: vad_db
+        type: hdb
+        path: db
+        provides:
+            - {name: vad_db, public: true}
+        parameters:
+            memory: 256M
+            disk-quota: 256M
+        requires:
+            - {name: vad_hdi}
+    -
+        name: vad_srv
+        type: nodejs
+        path: srv
+        properties:
+            XS_APP_LOG_LEVEL: debug
+        parameters:
+            memory: 256M
+            disk-quota: 1024M
+        provides:
+            - {name: vad_srv, public: true, properties: {url: '${default-url}'}}
+        requires:
+            - {name: vad_db}
+            - {name: vad_hdi}
+            - {name: vad_uaa}
+            - {name: vad_dest}
+            - {name: vad_conn}
+
+resources:
+    -
+        name: vad_hdi
+        type: org.cloudfoundry.existing-service
+    -
+        name: vad_uaa
+        type: org.cloudfoundry.existing-service
+    -
+        name: vad_dest
+        type: org.cloudfoundry.existing-service
+    -
+        name: vad_conn
+        type: org.cloudfoundry.existing-service
