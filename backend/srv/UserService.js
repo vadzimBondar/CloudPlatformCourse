@@ -21,10 +21,4 @@ module.exports = (srv) => {
         {crid: "C001", usid: "U001", name: "BatMobile", toUser: {usid: 'U001', name: "Batman"}}
     ]);
 
-srv.on('READ', 'Books', () => [
-	{
-		bsid: "U001", name: "Some book", pages: "1234"
-	}
-]);
-
 };

@@ -31,13 +31,4 @@ service odata {
 		}
 	) as projection on _Cars;
 
-	entity Books @(
-		title: 'Books',
-		Capabilites: {
-			InsertRestrictions: {Insertable: false},
-			UpdateRestrictions: {Updatable: false},
-			DeleteRestrictions: {Deletable: false}
-		}
-	) as projection on_Books;
-
 }

@@ -1,10 +1,11 @@
 *.iml
+*.mtar
 .mta
 .idea
+.jar
 gen
 node_modules/
-db/src/gen
 dist/
 build/
-*.mtar
-.jar
+db/src/gen
+
