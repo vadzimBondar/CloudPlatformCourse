@@ -25,7 +25,7 @@ module.exports = function () {
         // addWhereClause(req, getLangClause("EN"));
     });
 
-    this.on("CREATE", "Users", async (User) => {
+    this.on("CREATE", "Books", async (Book) => {
         req.log.debug(`ON CREATE ${req.target["@Common.Label"]}`);
 
         const {
@@ -44,7 +44,7 @@ module.exports = function () {
 //		throw new Error(`Invalid email for ${data.FIRSTNAME}. No Way! E-Mail must be valid and ${data.EMAIL} has problems`);
         }
 
-        const sSql = `INSERT INTO "USER" VALUES(?,?)`
+        const sSql = `INSERT INTO "BOOK" VALUES(?,?)`
         const aValues = [oUser.usid, oUser.name];
 
         req.log.debug(aValues);
@@ -55,7 +55,7 @@ module.exports = function () {
     });
 
 
-    this.after("READ", "Users", (entity) => {
+    this.after("READ", "Books", (entity) => {
         if (entity.length > 0) {
             // entity.forEach(item => item.mandt = "");
             entity.forEach(item => item.name = "");
